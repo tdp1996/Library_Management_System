@@ -1,3 +1,6 @@
 /.DS_Store
 /.vscode
 /library_management_system.egg-info
+data/
+__pycache__
+sql_script/
