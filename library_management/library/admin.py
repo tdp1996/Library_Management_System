@@ -16,6 +16,6 @@ class MemberAdmin(admin.ModelAdmin):
 class LoanAdmin(admin.ModelAdmin):
     list_display = ("LoanID", "BookID", "MemberID", "LoanDate", "DueDate", "ReturnDate", "Loan_Status", "Fine")
 
-admin.site.register(Book, BookAdmin)
+admin.site.register(Book)
 admin.site.register(Member, MemberAdmin)
 admin.site.register(Loan, LoanAdmin)

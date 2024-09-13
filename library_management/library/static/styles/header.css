@@ -1,0 +1,81 @@
+body {
+    background-color: rgb(224, 223, 154);
+  }
+  
+
+header {
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-bottom: 1px solid rgb(234, 234, 234);
+    z-index: 100;
+}
+
+.logo img{
+    height: 70px;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.search_books {
+    display: flex;
+    align-items: center;
+}
+
+.search_books input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.search_books button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.search_books button:hover {
+    background-color: #0056b3;
+}
+
+.auth {
+    display: flex;
+    gap: 10px;
+}
+
+.auth a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.auth a:hover {
+    text-decoration: underline;
+}

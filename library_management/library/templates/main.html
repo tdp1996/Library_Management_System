@@ -1,21 +1,44 @@
 {% extends "master.html" %}
+{% load static %}
 
 {% block title %}
-  Library
+  DP Library
 {% endblock %}
 
-
 {% block content %}
-  <h1>Library</h1>
-
-  {% comment %} <h3>Books</h3>
-  <form method="get" action="{% url 'library:search_books' %}">
-    <input type="text" name="query" placeholder="Search for books...">
-    <button type="submit">Search</button>
-  </form> {% endcomment %}
-
-
+<link rel="stylesheet" href="{% static 'styles/header.css' %}">
+<header class="header">
+  <div class="logo">
+    <img src="{% static 'images/logo.webp' %}" alt="Library Logo">
+  </div>
   
-  <p>Check out all our <a href="library/">books</a></p>
+  <nav class="navbar">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/my_books">My Books</a></li>
+      <li><a href="/browse">Categories</a></li>
+    </ul>
+  </nav>
   
+  <div class="search_books"> 
+    <form method="get" action="{% url 'library:search_books' %}">
+      <input type="text" name="query" placeholder="Search for books...">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  
+  <div class="auth">
+    <a href="/login">Log In</a> | <a href="/register">Sign Up</a>
+  </div>
+</header>
+
+{% if results %}
+    <h2>Results</h2>
+    <ul>
+      {% for book in results %}
+        <li>{{ book.Book_Title }} by {{ book.Book_Author }}</li>
+      {% endfor %}
+    </ul>
+{% endif %}
+
 {% endblock %}
