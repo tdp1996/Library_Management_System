@@ -1,0 +1,58 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/header.css' %}">
+<header class="header">
+  <div class="logo">
+    <img src="{% static 'images/logo.webp' %}" alt="Library Logo">
+  </div>
+  
+  <nav class="navbar">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/my_books">My Books</a></li>
+      <li class="dropdown">
+        <a class="dropbtn">Categories <span>▼</span></a>
+        <div class="dropdown-content">
+          <a href="{% url 'library:category_books' genre='fiction' %}">Fiction</a>
+          <a href="{% url 'library:category_books' genre='non-fiction' %}">Non-Fiction</a>
+          <a href="{% url 'library:category_books' genre='science' %}">Science</a>
+          <a href="{% url 'library:category_books' genre='mythology' %}">Mythology</a>
+          <a href="{% url 'library:category_books' genre='history' %}">History</a>
+          <a href="{% url 'library:category_books' genre='crime' %}">Crime</a>
+          <a href="{% url 'library:category_books' genre='thriller' %}">Thriller</a>
+          <a href="{% url 'library:category_books' genre='adventure' %}">Adventure</a>
+          <a href="{% url 'library:category_books' genre='romance' %}">Romance</a>
+          <a href="{% url 'library:category_books' genre='mystery' %}">Mystery</a>
+          <a href="{% url 'library:category_books' genre='self-help' %}">Self-Help</a>
+          <a href="{% url 'library:category_books' genre='children' %}">Children</a>
+          <a href="{% url 'library:category_books' genre='fantasy' %}">Fantasy</a>
+          <a href="{% url 'library:category_books' genre='classic' %}">Classic</a>
+          <a href="{% url 'library:category_books' genre='drama' %}">Drama</a>
+          <a href="{% url 'library:category_books' genre='technology' %}">Technology</a>
+          <a href="{% url 'library:category_books' genre='horror' %}">Horror</a>
+          <a href="{% url 'library:category_books' genre='humor' %}">Humor</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  
+  <div class="search_books"> 
+    <form method="get" action="{% url 'library:search_books' %}">
+      <input type="text" name="query" placeholder="Search for books...">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  
+  <div class="auth">
+    <a href="/login">Log In</a> | <a href="/register">Sign Up</a>
+  </div>
+</header>
+
+{% if results %}
+    <h2>Results</h2>
+    <ul>
+      {% for book in results %}
+        <li>{{ book.Book_Title }} by {{ book.Book_Author }}</li>
+      {% endfor %}
+    </ul>
+{% endif %}

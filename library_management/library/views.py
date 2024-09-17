@@ -4,19 +4,6 @@ from .models import Book
 
 from django.db.models import Q
 
-# def books(request):
-#     thebooks = Book.objects.order_by('?')[:5]
-#     context = {
-#         'thebooks': thebooks,
-#     }
-#     return render(request, 'all_books.html', context)
-
-# def details(request, id):
-#     thebooks = Book.objects.get(BookID=id)
-#     context = {
-#         'thebooks': thebooks,
-#     }
-#     return render(request, 'details.html', context)
 
 def main(request):
     return render(request, 'main.html')
@@ -40,8 +27,18 @@ def search_books(request):
     }
     return render(request, 'search_books.html', context)
 
+
 def category_books(request, genre):
-    books = get_list_or_404(Book, Genre__icontains=genre)  # Sử dụng get_list_or_404 để trả về 404 nếu không có sách nào
+    books = get_list_or_404(Book, Genre__icontains=genre)
     return render(request, 'category_books.html', {'books': books, 'genre': genre})
+
+
+def details(request, id):
+    books = Book.objects.get(BookID=id)
+    context = {
+        'books': books,
+    }
+    return render(request, 'details.html', context)
+
 
 
