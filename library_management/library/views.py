@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 from .models import Book
 # from .forms import BookSearchForm
 
@@ -39,4 +39,9 @@ def search_books(request):
         'results': results,
     }
     return render(request, 'search_books.html', context)
+
+def category_books(request, genre):
+    books = get_list_or_404(Book, Genre__icontains=genre)  # Sử dụng get_list_or_404 để trả về 404 nếu không có sách nào
+    return render(request, 'category_books.html', {'books': books, 'genre': genre})
+
 

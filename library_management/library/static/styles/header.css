@@ -2,9 +2,9 @@ body {
     background-color: rgb(224, 223, 154);
   }
   
-
 header {
     height: 70px;
+    font-size: 18px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -47,6 +47,7 @@ header {
 }
 
 .search_books input {
+    width: 300px;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -79,3 +80,51 @@ header {
 .auth a:hover {
     text-decoration: underline;
 }
+
+/* Style cho menu dropdown */
+.navbar .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Style cho nút dropdown bao gồm mũi tên */
+.navbar .dropbtn span {
+    font-size: 12px;  /* Điều chỉnh kích thước mũi tên */
+    vertical-align: middle;  /* Căn giữa mũi tên với chữ */
+    cursor: pointer;
+}
+  
+  /* Điều chỉnh thêm cho toàn bộ nút nếu cần */
+.navbar .dropbtn {
+    cursor: pointer;
+    padding: 10px 15px;  
+}
+  
+  
+.navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.navbar .dropdown-content a {
+    font-size: 14px;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.navbar .dropdown-content a:hover {
+    background-color: #f7f4f4;
+}
+  
+  /* Hiển thị dropdown khi hover */
+.navbar .dropdown:hover .dropdown-content {
+    display: block;
+    cursor: pointer;
+}
+  

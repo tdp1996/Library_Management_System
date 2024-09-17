@@ -1,0 +1,14 @@
+{% extends 'master.html' %}
+
+{% block content %}
+  <h1>{{ Genre | capfirst }} Books</h1>
+  <div class="books">
+    {% for book in books %}
+      <div class="book">
+        <h2>{{ book.Book_Title }}</h2>
+        <p>Author: {{ book.Book_Author }}</p>
+        <p>Genre: {{ book.Genre }}</p>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

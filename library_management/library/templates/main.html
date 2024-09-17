@@ -16,7 +16,29 @@
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/my_books">My Books</a></li>
-      <li><a href="/browse">Categories</a></li>
+      <li class="dropdown">
+        <a class="dropbtn">Categories <span>▼</span></a>
+        <div class="dropdown-content">
+          <a href="{% url 'library:category_books' genre='fiction' %}">Fiction</a>
+          <a href="{% url 'library:category_books' genre='nonfiction' %}">Non-Fiction</a>
+          <a href="{% url 'library:category_books' genre='science' %}">Science</a>
+          <a href="{% url 'library:category_books' genre='mythology' %}">Mythology</a>
+          <a href="{% url 'library:category_books' genre='history' %}">History</a>
+          <a href="{% url 'library:category_books' genre='crime' %}">Crime</a>
+          <a href="{% url 'library:category_books' genre='thriller' %}">Thriller</a>
+          <a href="{% url 'library:category_books' genre='adventure' %}">Adventure</a>
+          <a href="{% url 'library:category_books' genre='romance' %}">Romance</a>
+          <a href="{% url 'library:category_books' genre='mystery' %}">Mystery</a>
+          <a href="{% url 'library:category_books' genre='selfhelp' %}">Self-Help</a>
+          <a href="{% url 'library:category_books' genre='children' %}">Children</a>
+          <a href="{% url 'library:category_books' genre='fantasy' %}">Fantasy</a>
+          <a href="{% url 'library:category_books' genre='classic' %}">Classic</a>
+          <a href="{% url 'library:category_books' genre='drama' %}">Drama</a>
+          <a href="{% url 'library:category_books' genre='technology' %}">Technology</a>
+          <a href="{% url 'library:category_books' genre='horror' %}">Horror</a>
+          <a href="{% url 'library:category_books' genre='humor' %}">Humor</a>
+        </div>
+      </li>
     </ul>
   </nav>
   
