@@ -10,7 +10,9 @@
   {% if results %}
     <ul>
       {% for book in results %}
-        <li>{{ book.Book_Title }} by {{ book.Book_Author }} ({{ book.Genre }} - {{ book.Publisher }})</li>
+        <div class="book">
+          <div><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }} by {{ book.Book_Author }}</div>
+        </div>
       {% endfor %}
     </ul>
   {% else %}

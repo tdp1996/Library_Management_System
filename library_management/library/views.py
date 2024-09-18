@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_list_or_404
-from .models import Book
-# from .forms import BookSearchForm
-
+from django.contrib.auth import login
 from django.db.models import Q
+from django.shortcuts import get_list_or_404, render, redirect
+from .models import Book
+from .forms import SignUpForm
+
 
 
 def main(request):
@@ -39,6 +40,18 @@ def details(request, id):
         'books': books,
     }
     return render(request, 'details.html', context)
+
+
+def register(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # Đăng nhập ngay sau khi đăng ký thành công
+            return redirect('/')  # Chuyển hướng đến trang chủ
+    else:
+        form = SignUpForm()
+    return render(request, 'register.html', {'form': form})
 
 
 

@@ -11,7 +11,7 @@ class BookAdmin(admin.ModelAdmin):
     thumbnail.short_description = 'Thumbnail'
 
 class MemberAdmin(admin.ModelAdmin):
-    list_display = ("MemberID", "Member_Name", "Gender", "Email", "Phone", "Member_Address", "JoinDate")
+    list_display = ("MemberID", "Member_Name", "Email", "Phone", "Member_Address", "JoinDate")
 
 class LoanAdmin(admin.ModelAdmin):
     list_display = ("LoanID", "BookID", "MemberID", "LoanDate", "DueDate", "ReturnDate", "Loan_Status", "Fine")

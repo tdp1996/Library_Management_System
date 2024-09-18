@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 class Book(models.Model):
     BookID = models.AutoField(primary_key=True)
@@ -17,14 +18,47 @@ class Book(models.Model):
     class Meta:
         db_table = 'Books'
 
-class Member(models.Model):
+class MemberManager(BaseUserManager):
+    def create_user(self, Email, Member_Name, Phone, Member_Address, password=None):
+        if not Email:
+            raise ValueError('Users must have an email address')
+        user = self.model(
+            Email=self.normalize_email(Email),
+            Member_Name=Member_Name,
+            Phone=Phone,
+            Member_Address=Member_Address,
+        )
+        user.set_password(password)  # Thiết lập mật khẩu
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, Email, Member_Name, Phone, Member_Address, password):
+        user = self.create_user(
+            Email=Email,
+            password=password,
+            Member_Name=Member_Name,
+            Phone=Phone,
+            Member_Address=Member_Address,
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+
+class Member(AbstractBaseUser):
     MemberID = models.AutoField(primary_key=True)
     Member_Name = models.CharField(max_length=100)
-    Gender = models.CharField(max_length=10)
-    Email = models.EmailField()
+    Email = models.EmailField(unique=True)
     Phone = models.CharField(max_length=15)
     Member_Address = models.CharField(max_length=50)
-    JoinDate = models.DateField()
+    JoinDate = models.DateField(auto_now_add=True)
+    
+    # Thêm trường password từ AbstractBaseUser
+    password = models.CharField(max_length=128, null=True)
+
+    USERNAME_FIELD = 'Email'
+    REQUIRED_FIELDS = ['Member_Name', 'Phone', 'Member_Address']
+
+    objects = MemberManager()
 
     class Meta:
         db_table = 'Members'
