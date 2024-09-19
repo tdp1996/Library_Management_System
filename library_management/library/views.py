@@ -1,8 +1,8 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout, authenticate
 from django.db.models import Q
-from django.shortcuts import get_list_or_404, render, redirect
-from .models import Book
-from .forms import SignUpForm
+from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
+from .models import Book, Member
+from .forms import SignUpForm, LoginForm
 
 
 
@@ -47,11 +47,35 @@ def register(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Đăng nhập ngay sau khi đăng ký thành công
-            return redirect('/')  # Chuyển hướng đến trang chủ
+            return redirect('/login/')
     else:
         form = SignUpForm()
     return render(request, 'register.html', {'form': form})
+
+
+def member_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request=request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/')  
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
+
+
+def member_profile(request, id):
+    user_profile = get_object_or_404(Member, MemberID=id)
+    return render(request, 'profile.html', {'user_profile': user_profile})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
 
 
 
