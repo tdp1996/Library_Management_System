@@ -1,0 +1,50 @@
+.container {
+    margin-top: 100px;
+    border-radius: 5px;
+
+}
+
+.genre-section {
+    margin-bottom: 80px; /* Khoảng cách giữa các phần thể loại */
+}
+
+.genre-section h2 {
+    background-color: #ccc; /* Màu nền tiêu đề của thể loại */
+    padding: 10px 20px;
+    border-radius: 5px; /* Bo góc cho tiêu đề */
+    color: black; /* Màu chữ của tiêu đề */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng mờ cho tiêu đề */
+}
+
+.books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Căn chỉnh sách trong khung */
+    gap: 20px; /* Khoảng cách giữa các sách */
+}
+
+.book-item {
+    width: 15%; /* Chiều rộng của mỗi cuốn sách */
+    background-color: #f8f8f8; /* Màu nền của mỗi cuốn sách */
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm bóng mờ cho từng cuốn sách */
+    border-radius: 5px; /* Bo góc cho từng cuốn sách */
+}
+
+.book-cover {
+    width: 280px; /* Chiều rộng của ảnh bìa sách */
+    height: auto; /* Tự động điều chỉnh chiều cao của ảnh bìa */
+    border-radius: 3px; /* Bo góc ảnh bìa sách */
+}
+
+.book-item h3 {
+    margin-top: 10px; /* Khoảng cách giữa ảnh bìa và tiêu đề sách */
+    color: #333; /* Màu chữ của tiêu đề sách */
+    font-size: 16px; /* Kích thước chữ của tiêu đề sách */
+}
+
+.book-item p {
+    color: #666; /* Màu chữ thông tin sách */
+    font-size: 14px; /* Kích thước chữ thông tin sách */
+    line-height: 1.5; /* Khoảng cách giữa các dòng */
+}

@@ -1,0 +1,13 @@
+{% extends 'master.html' %}
+
+{% block content %}
+  {% include "header.html" %}
+  <h1>{{ Genre | capfirst }} Books</h1>
+  <div class="books">
+    {% for book in books %}
+      <div class="book">
+        <div><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }} by {{ book.Book_Author }}</div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
