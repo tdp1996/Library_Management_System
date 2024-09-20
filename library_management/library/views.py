@@ -78,4 +78,18 @@ def logout_view(request):
     return redirect('/')
 
 
-
+def homepage(request):
+    classic_books = Book.objects.filter(Genre__icontains='classic')[:5]
+    children_books = Book.objects.filter(Genre__icontains='children')[:5]
+    history_books = Book.objects.filter(Genre__icontains='history')[:5]
+    thriller_books = Book.objects.filter(Genre__icontains='thriller')[:5]
+    science_books = Book.objects.filter(Genre__icontains='science')[:5]
+    context = {
+        'classic_books': classic_books,
+        'children_books': children_books,
+        'history_books': history_books,
+        'thriller_books': thriller_books,
+        'science_books': science_books,
+    }
+    
+    return render(request, 'main.html', context)

@@ -1,0 +1,100 @@
+<!-- homepage.html -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/homepage.css' %}">
+<div class="container">
+    <!-- Classic Books Section -->
+    <div class="genre-section">
+        <h2><a href="{% url 'library:category_books' genre='classic' %}">Classic Books</a></h2>
+        <div class="books">
+            {% if classic_books %}
+                {% for book in classic_books %}
+                    <div class="book-item">
+                        <img src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover" class="book-cover">
+                        <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
+                        <p>By {{ book.Book_Author }}</p>
+                        <p>Year: {{ book.Year_Of_Publication }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No classic books available.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Children Books Section -->
+    <div class="genre-section">
+        <h2><a href="{% url 'library:category_books' genre='children' %}">Children Books</a></h2>
+        <div class="books">
+            {% if children_books %}
+                {% for book in children_books %}
+                    <div class="book-item">
+                        <img src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover" class="book-cover">
+                        <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
+                        <p>By {{ book.Book_Author }}</p>
+                        <p>Year: {{ book.Year_Of_Publication }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No children books available.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- History Books Section -->
+    <div class="genre-section">
+        <h2><a href="{% url 'library:category_books' genre='history' %}">History books</a></h2>
+        <div class="books">
+            {% if history_books %}
+                {% for book in history_books %}
+                    <div class="book-item">
+                        <img src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover" class="book-cover">
+                        <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
+                        <p>By {{ book.Book_Author }}</p>
+                        <p>Year: {{ book.Year_Of_Publication }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No history books available.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Thriller Books Section -->
+    <div class="genre-section">
+        <h2><a href="{% url 'library:category_books' genre='thriller' %}">Thriller Books</a></h2>
+        <div class="books">
+            {% if thriller_books %}
+                {% for book in thriller_books %}
+                    <div class="book-item">
+                        <img src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover" class="book-cover">
+                        <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
+                        <p>By {{ book.Book_Author }}</p>
+                        <p>Year: {{ book.Year_Of_Publication }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No thriller books available.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Science Books Section -->
+    <div class="genre-section">
+        <h2><a href="{% url 'library:category_books' genre='science' %}">Science Books</a></h2>
+        <div class="books">
+            {% if science_books %}
+                {% for book in science_books %}
+                    <div class="book-item">
+                        <img src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover" class="book-cover">
+                        <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
+                        <p>By {{ book.Book_Author }}</p>
+                        <p>Year: {{ book.Year_Of_Publication }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No science books available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
