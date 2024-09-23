@@ -28,7 +28,7 @@ class MemberManager(BaseUserManager):
             Phone=Phone,
             Member_Address=Member_Address,
         )
-        user.set_password(password)  # Thiết lập mật khẩu
+        user.set_password(password) 
         user.save(using=self._db)
         return user
 
@@ -44,14 +44,18 @@ class MemberManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-class Member(AbstractBaseUser):
+class Member(AbstractBaseUser, PermissionsMixin):
     MemberID = models.AutoField(primary_key=True)
     Member_Name = models.CharField(max_length=100)
     Email = models.EmailField(unique=True)
     Phone = models.CharField(max_length=15)
     Member_Address = models.CharField(max_length=50)
     JoinDate = models.DateField(auto_now_add=True)
-    
+
+    # Các trường trạng thái mà Django yêu cầu
+    is_active = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(default=False)
+
     # Thêm trường password từ AbstractBaseUser
     password = models.CharField(max_length=128, null=True)
 
@@ -63,10 +67,20 @@ class Member(AbstractBaseUser):
     class Meta:
         db_table = 'Members'
 
+    # Phương thức kiểm tra quyền của người dùng
+    def has_perm(self, perm, obj=None):
+        return True
+
+    # Phương thức kiểm tra quyền truy cập module
+    def has_module_perms(self, app_label):
+        return True
+
+    
+
 class Loan(models.Model):
     LoanID = models.AutoField(primary_key=True)
-    BookID = models.ForeignKey(Book, on_delete=models.CASCADE)
-    MemberID = models.ForeignKey(Member, on_delete=models.CASCADE)
+    BookID = models.ForeignKey(Book, on_delete=models.CASCADE, db_column='BookID')
+    MemberID = models.ForeignKey(Member, on_delete=models.CASCADE, db_column='MemberID')
     LoanDate = models.DateField()
     DueDate = models.DateField()
     ReturnDate = models.DateField(blank=True, null=True)

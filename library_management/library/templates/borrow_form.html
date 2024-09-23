@@ -1,0 +1,9 @@
+{% extends 'master.html' %}
+{% block content %}
+  <h1>Borrowing {{ book.Book_Title }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Borrow</button>
+  </form>
+{% endblock %}

@@ -1,8 +1,9 @@
 from django.contrib.auth import login, logout, authenticate
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
+from django.utils import timezone
 from .models import Book, Member
-from .forms import SignUpForm, LoginForm
+from .forms import SignUpForm, LoginForm, BorrowForm
 
 
 
@@ -93,3 +94,18 @@ def homepage(request):
     }
     
     return render(request, 'main.html', context)
+
+def borrow_book(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == 'POST':
+        form = BorrowForm(request.POST)
+        if form.is_valid():
+            loan = form.save(commit=False)
+            loan.BookID = book
+            loan.MemberID = request.user  # assuming the user is logged in
+            loan.LoanDate = timezone.now()
+            loan.save()
+            return redirect('/')  # redirect to a confirmation page or back to the book list
+    else:
+        form = BorrowForm()
+    return render(request, 'borrow_form.html', {'form': form, 'book': book})
