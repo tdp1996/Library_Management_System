@@ -53,7 +53,6 @@ class Member(AbstractBaseUser, PermissionsMixin):
     JoinDate = models.DateField(auto_now_add=True)
 
     # Các trường trạng thái mà Django yêu cầu
-    is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
 

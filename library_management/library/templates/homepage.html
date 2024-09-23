@@ -13,6 +13,8 @@
                         <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
                         <p>By {{ book.Book_Author }}</p>
                         <p>Year: {{ book.Year_Of_Publication }}</p>
+                        <div><a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a></div>
+
                     </div>
                 {% endfor %}
             {% else %}
@@ -32,6 +34,7 @@
                         <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
                         <p>By {{ book.Book_Author }}</p>
                         <p>Year: {{ book.Year_Of_Publication }}</p>
+                        <div><a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a></div>
                     </div>
                 {% endfor %}
             {% else %}
@@ -51,6 +54,7 @@
                         <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
                         <p>By {{ book.Book_Author }}</p>
                         <p>Year: {{ book.Year_Of_Publication }}</p>
+                        <div><a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a></div>
                     </div>
                 {% endfor %}
             {% else %}
@@ -70,6 +74,7 @@
                         <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
                         <p>By {{ book.Book_Author }}</p>
                         <p>Year: {{ book.Year_Of_Publication }}</p>
+                        <div><a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a></div>
                     </div>
                 {% endfor %}
             {% else %}
@@ -89,6 +94,7 @@
                         <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
                         <p>By {{ book.Book_Author }}</p>
                         <p>Year: {{ book.Year_Of_Publication }}</p>
+                        <div><a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a></div>
                     </div>
                 {% endfor %}
             {% else %}
