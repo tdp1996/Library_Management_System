@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block content %}
-  {% include "header.html" %}
-  {% include "homepage.html" %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles/general.css' %}">
+
+  <div class="main">
+    {% include "header.html" %}
+    {% include "homepage.html" %}
+  </div>
 
 {% endblock %}

@@ -1,30 +1,33 @@
-header {
-    height: 70px;
-    font-size: 18px;
+.header {
+    height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 10.5%;
+    background-color: azure;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background-color: white;
-    border-bottom: 1px solid rgb(234, 234, 234);
     z-index: 100;
 }
 
-.logo img{
-    height: 70px;
+.logo {
+    height: 100px;
 }
 
-.navbar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.navbar {
     display: flex;
-    gap: 20px;
+    align-items: center; 
+    justify-content: center;
+
+}
+.navbar ul {
+    display: flex;
+    
+    font-size: 20px;
+    padding: 20px;
 }
 
 .navbar ul li {
@@ -37,73 +40,20 @@ header {
     font-weight: bold;
 }
 
-.search_books {
-    display: flex;
-    align-items: center;
-}
-
-.search_books input {
-    width: 400px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-right: 10px;
-}
-
-.search_books button {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.search_books button:hover {
-    background-color: #0056b3;
-}
-
-.auth .profile-pic {
-    width: 50px;
-    height: 50px; 
-    border-radius: 50%; 
-    border: 2px solid #fff;
-    margin-right: 10px; 
-    float: right; 
-}
-
-
-.auth {
-    display: flex; 
-    gap: 15px
-}
-
-.auth a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.auth a:hover {
-    text-decoration: underline;
-}
-
-/* Style cho menu dropdown */
 .navbar .dropdown {
     position: relative;
     display: inline-block;
   }
   
-  /* Style cho nút dropdown bao gồm mũi tên */
+
 .navbar .dropbtn span {
-    font-size: 12px;  /* Điều chỉnh kích thước mũi tên */
-    vertical-align: middle;  /* Căn giữa mũi tên với chữ */
+    font-size: 12px;  
+    vertical-align: middle; 
     cursor: pointer;
 }
   
-  /* Điều chỉnh thêm cho toàn bộ nút nếu cần */
 .navbar .dropbtn {
     cursor: pointer;
-    padding: 10px 15px;  
 }
   
   
@@ -128,9 +78,90 @@ header {
     background-color: #f7f4f4;
 }
   
-  /* Hiển thị dropdown khi hover */
+
 .navbar .dropdown:hover .dropdown-content {
     display: block;
     cursor: pointer;
 }
+
+
+
+form {
+    flex: 1;
+    padding-left: 50px;
+    margin-right: 35px;
+    max-width: 450px;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    flex: 1;
+    height: 36px;
+    padding-left: 10px;
+    font-size: 16px;
+    border: 1px solid rgb(192, 192, 192); 
+    border-radius: 2px;
+    box-shadow: inset 1px 2px 5px rgba(0 ,0, 0, 0.05);
+}
+
+.search-button {
+    height: 40px;
+    width: 66px;
+    background-color: rgb(240, 240, 240);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(192, 192, 192);
+    margin-left: -5px;
+    margin-right: 10px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.search-button:hover {
+    background-color: rgb(126, 118, 118);
+}
+
+.search-icon {
+    width: 25px;
+}
+
+.auth {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.profile-link, .auth-link {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px; 
+    transition: background-color 0.3s ease;
+  }
+
+.profile, .login-signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth a:hover {
+    text-decoration: underline;
+}
+
+.profile-link:hover, .auth-link:hover {
+    background-color: #0056b3; 
+}
+  
+.profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; 
+    margin-right: 8px;
+}
+
   
