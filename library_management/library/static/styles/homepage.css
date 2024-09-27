@@ -3,53 +3,157 @@
     background-color: white;
     border: 1px solid rgb(234, 234, 234);
     border-radius: 5px;
-    margin: 100px auto;
+    margin: 100px auto 0;
     justify-content: center;
     align-items: center;
+}
 
+.intro-section {
+    background-color: rgb(203, 207, 175); /* Light grey background for the intro section */
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px; /* Adds some space between the intro section and the book sections */
+}
+
+.intro-section h2 {
+    color:rgb(0, 0, 0); /* Dark grey color for the heading */
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.intro-section p {
+    color: rgb(0, 0, 0); /* Medium grey color for the text */
+    font-size: 18px;
+    line-height: 1.5;
 }
 
 .genre-section {
-    margin-bottom: 80px; /* Khoảng cách giữa các phần thể loại */
+    margin-bottom: 40px; 
 }
 
+/* Style adjustments for the genre sections */
 .genre-section h2 {
-    background-color: #ccc; /* Màu nền tiêu đề của thể loại */
+    background-color:  rgb(203, 207, 175); 
     padding: 10px 20px;
-    border-radius: 5px; /* Bo góc cho tiêu đề */
-    color: black; /* Màu chữ của tiêu đề */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng mờ cho tiêu đề */
+    border-radius: 5px; /* Rounded corners for the genre titles */
 }
 
-.books {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; /* Căn chỉnh sách trong khung */
-    gap: 20px; /* Khoảng cách giữa các sách */
+.genre-section .books {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    column-gap: 15px;
+    row-gap: 30px;
+    margin: 0 15px;
 }
 
-.book-item {
-    width: 15%; /* Chiều rộng của mỗi cuốn sách */
-    background-color: #f8f8f8; /* Màu nền của mỗi cuốn sách */
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm bóng mờ cho từng cuốn sách */
-    border-radius: 5px; /* Bo góc cho từng cuốn sách */
+.book-preview {
+    width: 100%; /* Adjusts the width of each book item */
+    background-color: rgb(235, 246, 246);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds shadow for 3D effect */
+    border-radius: 5px;
+    transition: transform 0.3s;
+    position: relative;
+    padding-bottom: 80px;
+}
+
+.book-preview:hover {
+    transform: translateY(-5px); /* Hiệu ứng nổi lên khi hover */
+    cursor: pointer;
 }
 
 .book-cover {
-    width: 280px; /* Chiều rộng của ảnh bìa sách */
-    height: auto; /* Tự động điều chỉnh chiều cao của ảnh bìa */
-    border-radius: 3px; /* Bo góc ảnh bìa sách */
+    width: 99%;
+    height: 350px;
+    border-top-left-radius: 5px; /* Rounded top corners for the images */
+    border-top-right-radius: 5px;
+    margin-right: 1%;
+    overflow: hidden;
 }
 
-.book-item h3 {
-    margin-top: 10px; /* Khoảng cách giữa ảnh bìa và tiêu đề sách */
-    color: #333; /* Màu chữ của tiêu đề sách */
-    font-size: 16px; /* Kích thước chữ của tiêu đề sách */
+.book-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    box-shadow: 0 5px 7px rgba(0,0,0,0.1);
+
 }
 
-.book-item p {
-    color: #666; /* Màu chữ thông tin sách */
-    font-size: 14px; /* Kích thước chữ thông tin sách */
-    line-height: 1.5; /* Khoảng cách giữa các dòng */
+/* .book-title {
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+} */
+
+.book-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgb(0, 0, 0);
+    margin-bottom: 5px;
+    padding: 0 5px;
 }
+
+.book-preview a {
+    color: black; /* Đặt màu chữ thành đen */
+    text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+.book-author, .book-year {
+    color: rgb(70, 70, 70); /* Màu xám cho thông tin phụ */
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.read-borrow-book {
+    position: absolute; /* Cố định khối tại vị trí mong muốn trong .book-preview */
+    bottom: 15px; /* Cách đáy của .book-preview một khoảng 15px */
+    /* left: 50%; /* Căn giữa theo chiều ngang */
+    /* transform: translateX(-50%);  */
+    width: 90%; /* Độ rộng của khối đọc và mượn sách */
+    padding: 0 5%;
+    display: flex; /* Dùng flex để căn chỉnh các nút */
+    justify-content: space-between;
+    gap: 5px
+}
+
+.read-borrow-book button {
+    width: 48%; /* Mỗi nút chiếm 48% chiều rộng */
+    padding: 10px 15px;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.read-borrow-book button a {
+    text-decoration: none;
+    color: white;
+}
+
+.read-borrow-book button:hover {
+    background-color: #357ae8; /* Darker color on hover */
+}
+
+/* Responsive cho màn hình nhỏ hơn */
+@media screen and (max-width: 768px) {
+    .book-preview {
+        margin: 10px auto; /* Căn giữa khối sách */
+    }
+
+    .read-borrow-book {
+        flex-direction: column; /* Nút xếp chồng lên nhau */
+    }
+
+    .read-borrow-book button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+

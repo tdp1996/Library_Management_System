@@ -3,18 +3,32 @@
 <link rel="stylesheet" href="{% static 'styles/homepage.css' %}">
 <div class="container">
     <!-- Classic Books Section -->
+    <div class="intro-section">
+        <h2>Welcome to Our Digital Library</h2>
+        <p>Explore a vast universe of knowledge and adventure right from your screen. Our library offers a wide range of books across various genres, available for borrowing with just a few clicks. Whether you're into the timeless classics, thrilling mysteries, or groundbreaking scientific research, we have something for everyone. Dive into your next reading adventure today!</p>
+    </div>
     <div class="genre-section">
         <h2><a href="{% url 'library:category_books' genre='classic' %}">Classic Books</a></h2>
         <div class="books">
             {% if classic_books %}
                 {% for book in classic_books %}
-                    <div class="book-item">
-                        <img src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover" class="book-cover">
-                        <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
-                        <p>By {{ book.Book_Author }}</p>
-                        <p>Year: {{ book.Year_Of_Publication }}</p>
-                        <div><a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a></div>
+                    <div class="book-preview">
+                        <a href="{% url 'library:details' book.BookID %}">
+                        <div class="book-cover">
+                            <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+                        </div>
 
+                        <div class="book-title">   
+                            <h3>{{ book.Book_Title }}</h3>
+                        </div>
+                        <div class="read-borrow-book">
+                            <button type="submit">
+                                <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                            </button>
+                            <button type="submit">
+                                <a href="{{book.Book_PDF}}">Read Online</a>
+                            </button>
+                        </div>                          
                     </div>
                 {% endfor %}
             {% else %}
@@ -29,13 +43,24 @@
         <div class="books">
             {% if children_books %}
                 {% for book in children_books %}
-                    <div class="book-item">
-                        <img src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover" class="book-cover">
-                        <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
-                        <p>By {{ book.Book_Author }}</p>
-                        <p>Year: {{ book.Year_Of_Publication }}</p>
-                        <div><a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a></div>
-                    </div>
+                    <div class="book-preview">
+                        <a href="{% url 'library:details' book.BookID %}">
+                        <div class="book-cover">
+                            <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+                        </div>
+
+                        <div class="book-title">   
+                            <h3>{{ book.Book_Title }}</h3>
+                        </div>
+                        <div class="read-borrow-book">
+                            <button type="submit">
+                                <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                            </button>
+                            <button type="submit">
+                                <a href="{{book.Book_PDF}}">Read Online</a>
+                            </button>
+                        </div>                          
+                    </div> 
                 {% endfor %}
             {% else %}
                 <p>No children books available.</p>
@@ -49,12 +74,23 @@
         <div class="books">
             {% if history_books %}
                 {% for book in history_books %}
-                    <div class="book-item">
-                        <img src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover" class="book-cover">
-                        <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
-                        <p>By {{ book.Book_Author }}</p>
-                        <p>Year: {{ book.Year_Of_Publication }}</p>
-                        <div><a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a></div>
+                    <div class="book-preview">
+                        <a href="{% url 'library:details' book.BookID %}">
+                        <div class="book-cover">
+                            <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+                        </div>
+
+                        <div class="book-title">   
+                            <h3>{{ book.Book_Title }}</h3>
+                        </div>
+                        <div class="read-borrow-book">
+                            <button type="submit">
+                                <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                            </button>
+                            <button type="submit">
+                                <a href="{{book.Book_PDF}}">Read Online</a>
+                            </button>
+                        </div>                          
                     </div>
                 {% endfor %}
             {% else %}
@@ -69,12 +105,23 @@
         <div class="books">
             {% if thriller_books %}
                 {% for book in thriller_books %}
-                    <div class="book-item">
-                        <img src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover" class="book-cover">
-                        <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
-                        <p>By {{ book.Book_Author }}</p>
-                        <p>Year: {{ book.Year_Of_Publication }}</p>
-                        <div><a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a></div>
+                    <div class="book-preview">
+                        <a href="{% url 'library:details' book.BookID %}">
+                        <div class="book-cover">
+                            <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+                        </div>
+
+                        <div class="book-title">   
+                            <h3>{{ book.Book_Title }}</h3>
+                        </div>
+                        <div class="read-borrow-book">
+                            <button type="submit">
+                                <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                            </button>
+                            <button type="submit">
+                                <a href="{{book.Book_PDF}}">Read Online</a>
+                            </button>
+                        </div>                          
                     </div>
                 {% endfor %}
             {% else %}
@@ -89,12 +136,23 @@
         <div class="books">
             {% if science_books %}
                 {% for book in science_books %}
-                    <div class="book-item">
-                        <img src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover" class="book-cover">
-                        <h3><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }}</h3>
-                        <p>By {{ book.Book_Author }}</p>
-                        <p>Year: {{ book.Year_Of_Publication }}</p>
-                        <div><a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a></div>
+                    <div class="book-preview">
+                        <a href="{% url 'library:details' book.BookID %}">
+                        <div class="book-cover">
+                            <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+                        </div>
+
+                        <div class="book-title">   
+                            <h3>{{ book.Book_Title }}</h3>
+                        </div>
+                        <div class="read-borrow-book">
+                            <button type="submit">
+                                <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                            </button>
+                            <button type="submit">
+                                <a href="{{book.Book_PDF}}">Read Online</a>
+                            </button>
+                        </div>                          
                     </div>
                 {% endfor %}
             {% else %}
