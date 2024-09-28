@@ -3,7 +3,7 @@
     background-color: white;
     border: 1px solid rgb(234, 234, 234);
     border-radius: 5px;
-    margin: 100px auto 0;
+    margin: 100px auto;
     justify-content: center;
     align-items: center;
 }
@@ -78,16 +78,6 @@
 
 }
 
-/* .book-title {
-    color: rgb(0, 0, 0);
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 25px;
-    margin-left: 5px;
-    margin-bottom: 10px;
-} */
-
 .book-title {
     font-size: 16px;
     font-weight: 600;
@@ -100,12 +90,6 @@
 .book-preview a {
     color: black; /* Đặt màu chữ thành đen */
     text-decoration: none; /* Loại bỏ gạch chân */
-}
-
-.book-author, .book-year {
-    color: rgb(70, 70, 70); /* Màu xám cho thông tin phụ */
-    font-size: 14px;
-    margin-bottom: 5px;
 }
 
 .read-borrow-book {
