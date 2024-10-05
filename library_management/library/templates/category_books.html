@@ -1,13 +1,41 @@
 {% extends 'master.html' %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/category.css' %}">
+
+
   {% include "header.html" %}
-  <h1>{{ Genre | capfirst }} Books</h1>
-  <div class="books">
-    {% for book in books %}
-      <div class="book">
-        <div><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }} by {{ book.Book_Author }}</div>
-      </div>
-    {% endfor %}
+  <div class="container">
+    <h1>Results for {{ genre | capfirst }} books</h1>
+    <div class="books">
+      {% for book in books %}
+        <div class="book-preview">
+          
+          <div class="left-section">
+            <a href="{% url 'library:details' book.BookID %}"><img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover"></a>
+          </div>  
+          <div class="mid-section">
+            <div class="book-title">   
+              <a href="{% url 'library:details' book.BookID %}"><h3>{{ book.Book_Title }}</h3></a>
+            </div>
+            <div class="book-author">
+              <p> By {{ book.Book_Author }}</p>
+            </div>
+            <div class="book-public-year">
+              <p>Year Of Publication: {{book.Year_Of_Publication}}
+            </div>  
+          </div> 
+          <div class="right-section">
+            <button type="submit">
+              <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+            </button>
+            <button type="submit">
+              <a href="{{book.Book_PDF}}">Read Online</a>
+            </button>
+          </div>                          
+        </div>
+      {% endfor %}
+    </div>
   </div>
 {% endblock %}

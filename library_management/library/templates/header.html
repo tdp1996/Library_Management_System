@@ -1,13 +1,13 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'styles/header.css' %}">
 <header class="header">
-  <div class="logo">
-    <img src="{% static 'images/logo.webp' %}" alt="Library Logo">
-  </div>
+
+  <a href="/">
+    <img class="logo" src="{% static 'images/logo.png' %}" alt="Library Logo">
+  </a>
   
   <nav class="navbar">
     <ul>
-      <li><a href="/">Home</a></li>
       <li class="dropdown">
         <a class="dropbtn">Categories <span>▼</span></a>
         <div class="dropdown-content">
@@ -34,39 +34,30 @@
     </ul>
   </nav>
   
-  <div class="search_books"> 
-    <form method="get" action="{% url 'library:search_books' %}">
-      <input type="text" name="query" placeholder="Search for books...">
-      <button type="submit">Search</button>
-    </form>
-  </div>
+  <form method="get" action="{% url 'library:search_books' %}">
+    <input class="search-bar" type="text" name="query" placeholder="Search for books...">
+    <button class="search-button" type="submit">
+      <img class="search-icon" src="{% static 'images/search.svg' %}" alt="Library Logo">
+    </button>
+  </form>
   
   <div class="auth">
     {% if user.is_authenticated %}
-    <div>
-      <a href="{% url 'library:member_profile' user.MemberID %}">
+    <div class="profile">
+      <a href="{% url 'library:member_profile' user.MemberID %}" class="profile-link">
         <img src="{% static 'images/profile_picture.webp' %}" alt="Profile Picture" class="profile-pic">
+        Profile
       </a>
-    </div>
-    <div>
-      <a href="{% url 'library:logout' %}">Log Out</a>
+      <a href="{% url 'library:logout' %}" class="auth-link">Log Out</a>
     </div>
     {% else %}
-      <div>
-        <a href="/login">Log In</a>
-      </div>
-      <div>
-        <a href="/register">Sign Up</a>
-      </div>
+    <div class="login-signup">
+      <a href="/login" class="auth-link">Log In</a>
+      <a href="/register" class="auth-link">Sign Up</a>
+    </div>
     {% endif %}
   </div>
+
 </header>
 
-{% if results %}
-    <h2>Results</h2>
-    <ul>
-      {% for book in results %}
-        <li>{{ book.Book_Title }} by {{ book.Book_Author }}</li>
-      {% endfor %}
-    </ul>
-{% endif %}
+
