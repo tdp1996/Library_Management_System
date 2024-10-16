@@ -1,8 +1,8 @@
 {% extends 'master.html' %}
 
 {% block content %}
-    {% include "header.html" %}
-    <h2>Đăng Ký</h2>
+    {% comment %} {% include "header.html" %} {% endcomment %}
+    <h2>Sign Up</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

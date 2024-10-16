@@ -9,72 +9,75 @@ class Book(models.Model):
     Year_Of_Publication = models.IntegerField(blank=True, null=True)
     Publisher = models.CharField(max_length=50, blank=True, null=True)
     Genre = models.CharField(max_length=50, blank=True, null=True)
-    Amount = models.IntegerField()
-    Available = models.IntegerField()
+    Amount = models.IntegerField(null=True)
+    Available = models.IntegerField(null=True)
     Image_URL_S = models.URLField(max_length=255, blank=True, null=True)
     Image_URL_M = models.URLField(max_length=255, blank=True, null=True)
     Image_URL_L = models.URLField(max_length=255, blank=True, null=True)
+    PDF_Link = models.CharField(max_length=100, null=True)
 
     class Meta:
         db_table = 'Books'
 
 class MemberManager(BaseUserManager):
-    def create_user(self, Email, Member_Name, Phone, Member_Address, password=None):
+    def create_user(self, Email, Name, Phone, Address, password=None):
         if not Email:
             raise ValueError('Users must have an email address')
         user = self.model(
             Email=self.normalize_email(Email),
-            Member_Name=Member_Name,
+            Name=Name,
             Phone=Phone,
-            Member_Address=Member_Address,
+            Address=Address,
         )
         user.set_password(password) 
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, Email, Member_Name, Phone, Member_Address, password):
+    def create_superuser(self, Email, Name, Phone, Address, password):
         user = self.create_user(
             Email=Email,
             password=password,
-            Member_Name=Member_Name,
+            Name=Name,
             Phone=Phone,
-            Member_Address=Member_Address,
+            Address=Address,
         )
         user.is_admin = True
+        user.is_superuser = True
+        user.is_staff = True
         user.save(using=self._db)
         return user
 
 class Member(AbstractBaseUser, PermissionsMixin):
     MemberID = models.AutoField(primary_key=True)
-    Member_Name = models.CharField(max_length=100)
-    Email = models.EmailField(unique=True)
+    Name = models.CharField(max_length=100)
+    Email = models.EmailField(unique=True) 
     Phone = models.CharField(max_length=15)
-    Member_Address = models.CharField(max_length=50)
+    Address = models.CharField(max_length=50)
     JoinDate = models.DateField(auto_now_add=True)
 
-    # Các trường trạng thái mà Django yêu cầu
+    # Status fields required by Django
     is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-
-    # Thêm trường password từ AbstractBaseUser
-    password = models.CharField(max_length=128, null=True)
-
-    USERNAME_FIELD = 'Email'
-    REQUIRED_FIELDS = ['Member_Name', 'Phone', 'Member_Address']
-
-    objects = MemberManager()
 
     class Meta:
         db_table = 'Members'
 
-    # Phương thức kiểm tra quyền của người dùng
+    USERNAME_FIELD = 'Email'
+    REQUIRED_FIELDS = ['Name', 'Phone', 'Address']
+
+    objects = MemberManager()
+
     def has_perm(self, perm, obj=None):
         return True
 
-    # Phương thức kiểm tra quyền truy cập module
     def has_module_perms(self, app_label):
         return True
 
+    # @property
+    # def is_staff(self):
+    #     return self.is_admin
     
 
 class Loan(models.Model):

@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.utils import timezone
 from .models import Book, Member
-from .forms import SignUpForm, LoginForm, BorrowForm
+from .forms import MemberCreationForm, LoginForm, BorrowForm
 
 
 
@@ -45,12 +45,12 @@ def details(request, id):
 
 def register(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = MemberCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             return redirect('/login/')
     else:
-        form = SignUpForm()
+        form = MemberCreationForm()
     return render(request, 'register.html', {'form': form})
 
 
