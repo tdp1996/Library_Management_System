@@ -1,14 +1,15 @@
-from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.db import models
+
 
 class Book(models.Model):
     BookID = models.AutoField(primary_key=True)
     ISBN = models.CharField(max_length=20, unique=True)
     Book_Title = models.CharField(max_length=100)
-    Book_Author = models.CharField(max_length=50, blank=True, null=True)
-    Year_Of_Publication = models.IntegerField(blank=True, null=True)
-    Publisher = models.CharField(max_length=50, blank=True, null=True)
-    Genre = models.CharField(max_length=50, blank=True, null=True)
+    Book_Author = models.CharField(max_length=50)
+    Year_Of_Publication = models.IntegerField()
+    Publisher = models.CharField(max_length=50)
+    Genre = models.CharField(max_length=50)
     Amount = models.IntegerField(null=True)
     Available = models.IntegerField(null=True)
     Image_URL_S = models.URLField(max_length=255, blank=True, null=True)
@@ -75,10 +76,6 @@ class Member(AbstractBaseUser, PermissionsMixin):
     def has_module_perms(self, app_label):
         return True
 
-    # @property
-    # def is_staff(self):
-    #     return self.is_admin
-    
 
 class Loan(models.Model):
     LoanID = models.AutoField(primary_key=True)
