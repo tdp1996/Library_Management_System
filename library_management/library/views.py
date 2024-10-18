@@ -1,9 +1,12 @@
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.utils import timezone
 from .models import Book, Member
 from .forms import MemberCreationForm, LoginForm, BorrowForm
+from django.http import Http404
+
 
 
 
@@ -33,6 +36,7 @@ def search_books(request):
 def category_books(request, genre):
     books = get_list_or_404(Book, Genre__icontains=genre)
     return render(request, 'category_books.html', {'books': books, 'genre': genre})
+
 
 
 def details(request, id):
@@ -91,10 +95,11 @@ def homepage(request):
         'history_books': history_books,
         'thriller_books': thriller_books,
         'science_books': science_books,
-    }
-    
+    }   
     return render(request, 'main.html', context)
 
+
+@login_required(login_url="/login/")
 def borrow_book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == 'POST':
