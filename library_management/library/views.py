@@ -1,10 +1,10 @@
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.utils import timezone
-from .models import Book, Member
 from .forms import MemberCreationForm, LoginForm, BorrowForm
-
+from .models import Book, Member
 
 
 def main(request):
@@ -36,7 +36,7 @@ def category_books(request, genre):
 
 
 def details(request, id):
-    books = Book.objects.get(BookID=id)
+    books = get_object_or_404(Book, BookID=id)
     context = {
         'books': books,
     }
@@ -91,10 +91,11 @@ def homepage(request):
         'history_books': history_books,
         'thriller_books': thriller_books,
         'science_books': science_books,
-    }
-    
+    }   
     return render(request, 'main.html', context)
 
+
+@login_required(login_url="/login/")
 def borrow_book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == 'POST':
@@ -102,7 +103,7 @@ def borrow_book(request, book_id):
         if form.is_valid():
             loan = form.save(commit=False)
             loan.BookID = book
-            loan.MemberID = request.user  # assuming the user is logged in
+            loan.MemberID = request.user 
             loan.LoanDate = timezone.now()
             loan.save()
             return redirect('/')  # redirect to a confirmation page or back to the book list
