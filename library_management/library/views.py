@@ -7,9 +7,6 @@ from .forms import MemberCreationForm, LoginForm, BorrowForm
 from .models import Book, Member
 
 
-
-
-
 def main(request):
     return render(request, 'main.html')
 
@@ -36,7 +33,6 @@ def search_books(request):
 def category_books(request, genre):
     books = get_list_or_404(Book, Genre__icontains=genre)
     return render(request, 'category_books.html', {'books': books, 'genre': genre})
-
 
 
 def details(request, id):
