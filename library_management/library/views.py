@@ -3,9 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.utils import timezone
-from .models import Book, Member
 from .forms import MemberCreationForm, LoginForm, BorrowForm
-from django.http import Http404
+from .models import Book, Member
+
 
 
 
@@ -40,7 +40,7 @@ def category_books(request, genre):
 
 
 def details(request, id):
-    books = Book.objects.get(BookID=id)
+    books = get_object_or_404(Book, BookID=id)
     context = {
         'books': books,
     }
@@ -107,7 +107,7 @@ def borrow_book(request, book_id):
         if form.is_valid():
             loan = form.save(commit=False)
             loan.BookID = book
-            loan.MemberID = request.user  # assuming the user is logged in
+            loan.MemberID = request.user 
             loan.LoanDate = timezone.now()
             loan.save()
             return redirect('/')  # redirect to a confirmation page or back to the book list

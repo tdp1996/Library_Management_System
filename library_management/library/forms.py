@@ -1,10 +1,10 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.forms.widgets import DateInput
-from .models import Member, Loan
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.contrib.auth.forms import AuthenticationForm, ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
+from django.forms.widgets import DateInput
+from django.utils import timezone
+from .models import Member, Loan
+
 
 class BookSearchForm(forms.Form):
     query = forms.CharField(label='Search for books', max_length=100)
@@ -63,4 +63,16 @@ class BorrowForm(forms.ModelForm):
         widgets = {
             'DueDate': DateInput(attrs={'type': 'date'}),
         }
+
+    def clean_DueDate(self):
+        due_date = self.cleaned_data.get('DueDate')
+        loan_date = timezone.now().date()
+
+        if due_date < loan_date:
+            raise ValidationError("Due date cannot be in the past or before the loan date.")
+        
+        if due_date == loan_date:
+            raise ValidationError("Due date cannot be the same as the loan date.")
+        
+        return due_date
 
