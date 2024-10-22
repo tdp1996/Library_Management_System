@@ -1,163 +1,164 @@
 <!-- homepage.html -->
-{% load static %}
-<link rel="stylesheet" href="{% static 'styles/homepage.css' %}">
-<div class="container">
-    <!-- Classic Books Section -->
-    <div class="intro-section">
-        <h2>Welcome to Our Digital Library</h2>
-        <p>Explore a vast universe of knowledge and adventure right from your screen. Our library offers a wide range of books across various genres, available for borrowing with just a few clicks. Whether you're into the timeless classics, thrilling mysteries, or groundbreaking scientific research, we have something for everyone. Dive into your next reading adventure today!</p>
-    </div>
-    <div class="genre-section">
-        <h2><a href="{% url 'library:category_books' genre='classic' %}">Classic Books</a></h2>
-        <div class="books">
-            {% if classic_books %}
-                {% for book in classic_books %}
-                    <div class="book-preview">
-                        <a href="{% url 'library:details' book.BookID %}"></a>
-                        <div class="book-cover">
-                            <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+{% extends "master.html" %}
+{% block content %}
+    
+    <div class="container">
+        <!-- Classic Books Section -->
+        <div class="intro-section">
+            <h2>Welcome to Our Digital Library</h2>
+            <p>Explore a vast universe of knowledge and adventure right from your screen. Our library offers a wide range of books across various genres, available for borrowing with just a few clicks. Whether you're into the timeless classics, thrilling mysteries, or groundbreaking scientific research, we have something for everyone. Dive into your next reading adventure today!</p>
+        </div>
+        <div class="genre-section">
+            <h2><a href="{% url 'library:category_books' genre='classic' %}">Classic Books</a></h2>
+            <div class="books">
+                {% if classic_books %}
+                    {% for book in classic_books %}
+                        <div class="book-preview">
+                            <a href="{% url 'library:details' book.BookID %}"></a>
+                            <div class="book-cover">
+                                <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+                            </div>
+                            <div class="book-title">   
+                                <h3>{{ book.Book_Title }}</h3>
+                            </div>
+                            <div class="read-borrow-book">
+                                <button type="submit">
+                                    <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                                </button>
+                                <button type="submit">
+                                    <a href="{{book.Book_PDF}}">Read Online</a>
+                                </button>
+                            </div>                          
                         </div>
-                        <div class="book-title">   
-                            <h3>{{ book.Book_Title }}</h3>
+                    {% endfor %}
+                {% else %}
+                    <p>No classic books available.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Children Books Section -->
+        <div class="genre-section">
+            <h2><a href="{% url 'library:category_books' genre='children' %}">Children Books</a></h2>
+            <div class="books">
+                {% if children_books %}
+                    {% for book in children_books %}
+                        <div class="book-preview">
+                            <a href="{% url 'library:details' book.BookID %}"></a>
+                            <div class="book-cover">
+                                <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+                            </div>
+
+                            <div class="book-title">   
+                                <h3>{{ book.Book_Title }}</h3>
+                            </div>
+                            <div class="read-borrow-book">
+                                <button type="submit">
+                                    <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                                </button>
+                                <button type="submit">
+                                    <a href="{{book.Book_PDF}}">Read Online</a>
+                                </button>
+                            </div>                          
                         </div>
-                        <div class="read-borrow-book">
-                            <button type="submit">
-                                <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
-                            </button>
-                            <button type="submit">
-                                <a href="{{book.Book_PDF}}">Read Online</a>
-                            </button>
-                        </div>                          
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>No classic books available.</p>
-            {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <p>No children books available.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- History Books Section -->
+        <div class="genre-section">
+            <h2><a href="{% url 'library:category_books' genre='history' %}">History books</a></h2>
+            <div class="books">
+                {% if history_books %}
+                    {% for book in history_books %}
+                        <div class="book-preview">
+                            <a href="{% url 'library:details' book.BookID %}"></a>
+                            <div class="book-cover">
+                                <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+                            </div>
+
+                            <div class="book-title">   
+                                <h3>{{ book.Book_Title }}</h3>
+                            </div>
+                            <div class="read-borrow-book">
+                                <button type="submit">
+                                    <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                                </button>
+                                <button type="submit">
+                                    <a href="{{book.Book_PDF}}">Read Online</a>
+                                </button>
+                            </div>                          
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No history books available.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Thriller Books Section -->
+        <div class="genre-section">
+            <h2><a href="{% url 'library:category_books' genre='thriller' %}">Thriller Books</a></h2>
+            <div class="books">
+                {% if thriller_books %}
+                    {% for book in thriller_books %}
+                        <div class="book-preview">
+                            <a href="{% url 'library:details' book.BookID %}"></a>
+                            <div class="book-cover">
+                                <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+                            </div>
+
+                            <div class="book-title">   
+                                <h3>{{ book.Book_Title }}</h3>
+                            </div>
+                            <div class="read-borrow-book">
+                                <button type="submit">
+                                    <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                                </button>
+                                <button type="submit">
+                                    <a href="{{book.Book_PDF}}">Read Online</a>
+                                </button>
+                            </div>                          
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No thriller books available.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Science Books Section -->
+        <div class="genre-section">
+            <h2><a href="{% url 'library:category_books' genre='science' %}">Science Books</a></h2>
+            <div class="books">
+                {% if science_books %}
+                    {% for book in science_books %}
+                        <div class="book-preview">
+                            <a href="{% url 'library:details' book.BookID %}"></a>
+                            <div class="book-cover">
+                                <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
+                            </div>
+
+                            <div class="book-title">   
+                                <h3>{{ book.Book_Title }}</h3>
+                            </div>
+                            <div class="read-borrow-book">
+                                <button type="submit">
+                                    <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                                </button>
+                                <button type="submit">
+                                    <a href="{{book.Book_PDF}}">Read Online</a>
+                                </button>
+                            </div>                          
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No science books available.</p>
+                {% endif %}
+            </div>
         </div>
     </div>
-
-    <!-- Children Books Section -->
-    <div class="genre-section">
-        <h2><a href="{% url 'library:category_books' genre='children' %}">Children Books</a></h2>
-        <div class="books">
-            {% if children_books %}
-                {% for book in children_books %}
-                    <div class="book-preview">
-                        <a href="{% url 'library:details' book.BookID %}"></a>
-                        <div class="book-cover">
-                            <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
-                        </div>
-
-                        <div class="book-title">   
-                            <h3>{{ book.Book_Title }}</h3>
-                        </div>
-                        <div class="read-borrow-book">
-                            <button type="submit">
-                                <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
-                            </button>
-                            <button type="submit">
-                                <a href="{{book.Book_PDF}}">Read Online</a>
-                            </button>
-                        </div>                          
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>No children books available.</p>
-            {% endif %}
-        </div>
-    </div>
-
-    <!-- History Books Section -->
-    <div class="genre-section">
-        <h2><a href="{% url 'library:category_books' genre='history' %}">History books</a></h2>
-        <div class="books">
-            {% if history_books %}
-                {% for book in history_books %}
-                    <div class="book-preview">
-                        <a href="{% url 'library:details' book.BookID %}"></a>
-                        <div class="book-cover">
-                            <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
-                        </div>
-
-                        <div class="book-title">   
-                            <h3>{{ book.Book_Title }}</h3>
-                        </div>
-                        <div class="read-borrow-book">
-                            <button type="submit">
-                                <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
-                            </button>
-                            <button type="submit">
-                                <a href="{{book.Book_PDF}}">Read Online</a>
-                            </button>
-                        </div>                          
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>No history books available.</p>
-            {% endif %}
-        </div>
-    </div>
-
-    <!-- Thriller Books Section -->
-    <div class="genre-section">
-        <h2><a href="{% url 'library:category_books' genre='thriller' %}">Thriller Books</a></h2>
-        <div class="books">
-            {% if thriller_books %}
-                {% for book in thriller_books %}
-                    <div class="book-preview">
-                        <a href="{% url 'library:details' book.BookID %}"></a>
-                        <div class="book-cover">
-                            <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
-                        </div>
-
-                        <div class="book-title">   
-                            <h3>{{ book.Book_Title }}</h3>
-                        </div>
-                        <div class="read-borrow-book">
-                            <button type="submit">
-                                <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
-                            </button>
-                            <button type="submit">
-                                <a href="{{book.Book_PDF}}">Read Online</a>
-                            </button>
-                        </div>                          
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>No thriller books available.</p>
-            {% endif %}
-        </div>
-    </div>
-
-    <!-- Science Books Section -->
-    <div class="genre-section">
-        <h2><a href="{% url 'library:category_books' genre='science' %}">Science Books</a></h2>
-        <div class="books">
-            {% if science_books %}
-                {% for book in science_books %}
-                    <div class="book-preview">
-                        <a href="{% url 'library:details' book.BookID %}"></a>
-                        <div class="book-cover">
-                            <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
-                        </div>
-
-                        <div class="book-title">   
-                            <h3>{{ book.Book_Title }}</h3>
-                        </div>
-                        <div class="read-borrow-book">
-                            <button type="submit">
-                                <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
-                            </button>
-                            <button type="submit">
-                                <a href="{{book.Book_PDF}}">Read Online</a>
-                            </button>
-                        </div>                          
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>No science books available.</p>
-            {% endif %}
-        </div>
-    </div>
-</div>
-
+{% endblock %}
