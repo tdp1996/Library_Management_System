@@ -27,10 +27,10 @@
             </div>  
           </div> 
           <div class="right-section">
-            <button type="submit">
+            <button class="btn-borrow" type="submit">
               <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
             </button>
-            <button type="submit">
+            <button class="btn-read-online" type="submit">
               <a href="{{book.Book_PDF}}">Read Online</a>
             </button>
           </div>                          

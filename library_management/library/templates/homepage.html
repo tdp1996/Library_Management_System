@@ -1,8 +1,9 @@
 <!-- homepage.html -->
 {% extends "master.html" %}
 {% block content %}
-    
-    <div class="container">
+{% load static %}
+  <link rel="stylesheet" href="{% static 'styles/homepage.css' %}">
+    <div class="homepage-container">
         <!-- Classic Books Section -->
         <div class="intro-section">
             <h2>Welcome to Our Digital Library</h2>
@@ -14,7 +15,7 @@
                 {% if classic_books %}
                     {% for book in classic_books %}
                         <div class="book-preview">
-                            <a href="{% url 'library:details' book.BookID %}"></a>
+                            <a href="{% url 'library:details' book.BookID %}">
                             <div class="book-cover">
                                 <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
                             </div>
@@ -44,7 +45,7 @@
                 {% if children_books %}
                     {% for book in children_books %}
                         <div class="book-preview">
-                            <a href="{% url 'library:details' book.BookID %}"></a>
+                            <a href="{% url 'library:details' book.BookID %}">
                             <div class="book-cover">
                                 <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
                             </div>
@@ -75,7 +76,7 @@
                 {% if history_books %}
                     {% for book in history_books %}
                         <div class="book-preview">
-                            <a href="{% url 'library:details' book.BookID %}"></a>
+                            <a href="{% url 'library:details' book.BookID %}">
                             <div class="book-cover">
                                 <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
                             </div>
@@ -106,7 +107,7 @@
                 {% if thriller_books %}
                     {% for book in thriller_books %}
                         <div class="book-preview">
-                            <a href="{% url 'library:details' book.BookID %}"></a>
+                            <a href="{% url 'library:details' book.BookID %}">
                             <div class="book-cover">
                                 <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
                             </div>
@@ -137,7 +138,7 @@
                 {% if science_books %}
                     {% for book in science_books %}
                         <div class="book-preview">
-                            <a href="{% url 'library:details' book.BookID %}"></a>
+                            <a href="{% url 'library:details' book.BookID %}">
                             <div class="book-cover">
                                 <img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover">
                             </div>

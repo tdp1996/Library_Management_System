@@ -5,12 +5,31 @@
 {% endblock %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/details.css' %}">
     {% include "header.html" %}
-    <h1>{{ books.Book_Title }} </h1>
-    <img src="{{ books.Image_URL_L }}" alt="Book Cover" style="width:200px;height:auto;">
-    <p>Author: {{ books.Book_Author }}
-    <p>Year of publication: {{ books.Year_Of_Publication }}</p>
-    <p>Publisher: {{ books.Publisher }}</p>
-    <p>Genre: {{ books.Genre }}</p>
-
+    <div class="details-container">
+        <div class="book-details">
+            <div class="book-image-container">
+                <img class="book-image" src="{{ books.Image_URL_L }}" alt="{{ books.Book_Title }} cover">
+            </div>
+            <div class="book-info-and-action-buttons">
+              <div class="book-info">
+                <h2>{{ books.Book_Title }}</h2>
+                <p><strong>By:</strong> {{ books.Book_Author }}</p>
+                <p><strong>Year Of Publication:</strong> {{ books.Year_Of_Publication }}</p>
+                <p><strong>Publisher:</strong> {{ books.Publisher }}</p>
+                <p><strong>Genre:</strong> {{ books.Genre }}</p>
+              </div>               
+              <div class="action-buttons">
+                <button class="btn-borrow" type="submit">
+                  <a href="{% url 'library:borrow_book' books.BookID %}">Borrow</a>
+                </button>
+                <button class="btn-read-online" type="submit">
+                  <a href="{{books.Book_PDF}}">Read Online</a>
+                </button>
+              </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

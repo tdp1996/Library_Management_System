@@ -113,12 +113,19 @@
     height: 70px; 
     width: 170px;
     padding: 5px 10px;
-    background-color: #4285F4;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.btn-borrow {
+    background-color: #007bff;
+}
+
+.btn-read-online {
+    background-color: #28a745;
 }
 
 .right-section button a {
