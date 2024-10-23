@@ -1,11 +1,16 @@
 {% extends 'master.html' %}
 
 {% block content %}
-    {% comment %} {% include "header.html" %} {% endcomment %}
-    <h2>Sign Up</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
-    </form>
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/register.css' %}">
+    {% include "header.html" %}
+
+    <div class="register-container">
+        <h2>Sign Up</h2>
+        <form method="post" class="register-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="register-button">Sign Up</button>
+        </form>
+    </div>
 {% endblock %}

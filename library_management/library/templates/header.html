@@ -1,63 +1,64 @@
+{% extends "master.html" %}
+{% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'styles/header.css' %}">
-<header class="header">
+  <header class="header">
 
-  <a href="/">
-    <img class="logo" src="{% static 'images/logo.png' %}" alt="Library Logo">
-  </a>
-  
-  <nav class="navbar">
-    <ul>
-      <li class="dropdown">
-        <a class="dropbtn">Categories <span>▼</span></a>
-        <div class="dropdown-content">
-          <a href="{% url 'library:category_books' genre='fiction' %}">Fiction</a>
-          <a href="{% url 'library:category_books' genre='non-fiction' %}">Non-Fiction</a>
-          <a href="{% url 'library:category_books' genre='science' %}">Science</a>
-          <a href="{% url 'library:category_books' genre='mythology' %}">Mythology</a>
-          <a href="{% url 'library:category_books' genre='history' %}">History</a>
-          <a href="{% url 'library:category_books' genre='crime' %}">Crime</a>
-          <a href="{% url 'library:category_books' genre='thriller' %}">Thriller</a>
-          <a href="{% url 'library:category_books' genre='adventure' %}">Adventure</a>
-          <a href="{% url 'library:category_books' genre='romance' %}">Romance</a>
-          <a href="{% url 'library:category_books' genre='mystery' %}">Mystery</a>
-          <a href="{% url 'library:category_books' genre='self-help' %}">Self-Help</a>
-          <a href="{% url 'library:category_books' genre='children' %}">Children</a>
-          <a href="{% url 'library:category_books' genre='fantasy' %}">Fantasy</a>
-          <a href="{% url 'library:category_books' genre='classic' %}">Classic</a>
-          <a href="{% url 'library:category_books' genre='drama' %}">Drama</a>
-          <a href="{% url 'library:category_books' genre='technology' %}">Technology</a>
-          <a href="{% url 'library:category_books' genre='horror' %}">Horror</a>
-          <a href="{% url 'library:category_books' genre='humor' %}">Humor</a>
-        </div>
-      </li>
-    </ul>
-  </nav>
-  
-  <form method="get" action="{% url 'library:search_books' %}">
-    <input class="search-bar" type="text" name="query" placeholder="Search for books...">
-    <button class="search-button" type="submit">
-      <img class="search-icon" src="{% static 'images/search.svg' %}" alt="Library Logo">
-    </button>
-  </form>
-  
-  <div class="auth">
-    {% if user.is_authenticated %}
-    <div class="profile">
-      <a href="{% url 'library:member_profile' user.MemberID %}" class="profile-link">
-        <img src="{% static 'images/profile_picture.webp' %}" alt="Profile Picture" class="profile-pic">
-        Profile
-      </a>
-      <a href="{% url 'library:logout' %}" class="auth-link">Log Out</a>
+    <a href="/">
+      <img class="logo" src="{% static 'images/logo.png' %}" alt="Library Logo">
+    </a>
+    
+    <nav class="navbar">
+      <ul>
+        <li class="dropdown">
+          <a class="dropbtn">Categories <span>▼</span></a>
+          <div class="dropdown-content">
+            <a href="{% url 'library:category_books' genre='fiction' %}">Fiction</a>
+            <a href="{% url 'library:category_books' genre='non-fiction' %}">Non-Fiction</a>
+            <a href="{% url 'library:category_books' genre='science' %}">Science</a>
+            <a href="{% url 'library:category_books' genre='mythology' %}">Mythology</a>
+            <a href="{% url 'library:category_books' genre='history' %}">History</a>
+            <a href="{% url 'library:category_books' genre='crime' %}">Crime</a>
+            <a href="{% url 'library:category_books' genre='thriller' %}">Thriller</a>
+            <a href="{% url 'library:category_books' genre='adventure' %}">Adventure</a>
+            <a href="{% url 'library:category_books' genre='romance' %}">Romance</a>
+            <a href="{% url 'library:category_books' genre='mystery' %}">Mystery</a>
+            <a href="{% url 'library:category_books' genre='self-help' %}">Self-Help</a>
+            <a href="{% url 'library:category_books' genre='children' %}">Children</a>
+            <a href="{% url 'library:category_books' genre='fantasy' %}">Fantasy</a>
+            <a href="{% url 'library:category_books' genre='classic' %}">Classic</a>
+            <a href="{% url 'library:category_books' genre='drama' %}">Drama</a>
+            <a href="{% url 'library:category_books' genre='technology' %}">Technology</a>
+            <a href="{% url 'library:category_books' genre='horror' %}">Horror</a>
+            <a href="{% url 'library:category_books' genre='humor' %}">Humor</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    
+    <form method="get" action="{% url 'library:search_books' %}">
+      <input class="search-bar" type="text" name="query" placeholder="Search for books...">
+      <button class="search-button" type="submit">
+        <img class="search-icon" src="{% static 'images/search.svg' %}" alt="Library Logo">
+      </button>
+    </form>
+    
+    <div class="auth">
+      {% if user.is_authenticated %}
+      <div class="profile">
+        <a href="{% url 'library:member_profile' user.MemberID %}" class="profile-link">
+          <img src="{% static 'images/profile_picture.webp' %}" alt="Profile Picture" class="profile-pic">
+          Profile
+        </a>
+        <a href="{% url 'library:logout' %}" class="auth-link">Log Out</a>
+      </div>
+      {% else %}
+      <div class="login-signup">
+        <a href="/login" class="auth-link">Log In</a>
+        <a href="/register" class="auth-link">Sign Up</a>
+      </div>
+      {% endif %}
     </div>
-    {% else %}
-    <div class="login-signup">
-      <a href="/login" class="auth-link">Log In</a>
-      <a href="/register" class="auth-link">Sign Up</a>
-    </div>
-    {% endif %}
-  </div>
 
-</header>
-
+  </header>
+{% endblock %}
 

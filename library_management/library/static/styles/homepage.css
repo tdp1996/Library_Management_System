@@ -1,4 +1,4 @@
-.container {
+.homepage-container {
     width: 80%;
     background-color: white;
     border: 1px solid rgb(234, 234, 234);
@@ -9,20 +9,20 @@
 }
 
 .intro-section {
-    background-color: rgb(203, 207, 175); /* Light grey background for the intro section */
+    background-color: rgb(203, 207, 175); 
     padding: 20px;
     text-align: center;
-    margin-bottom: 30px; /* Adds some space between the intro section and the book sections */
+    margin-bottom: 30px; 
 }
 
 .intro-section h2 {
-    color:rgb(0, 0, 0); /* Dark grey color for the heading */
+    color:rgb(0, 0, 0);
     font-size: 30px;
     margin-bottom: 10px;
 }
 
 .intro-section p {
-    color: rgb(0, 0, 0); /* Medium grey color for the text */
+    color: rgb(0, 0, 0);
     font-size: 18px;
     line-height: 1.5;
 }
@@ -31,11 +31,11 @@
     margin-bottom: 40px; 
 }
 
-/* Style adjustments for the genre sections */
+
 .genre-section h2 {
     background-color:  rgb(203, 207, 175); 
     padding: 10px 20px;
-    border-radius: 5px; /* Rounded corners for the genre titles */
+    border-radius: 5px; 
 }
 
 .genre-section .books {
@@ -47,9 +47,9 @@
 }
 
 .book-preview {
-    width: 100%; /* Adjusts the width of each book item */
+    width: 100%; 
     background-color: rgb(235, 246, 246);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds shadow for 3D effect */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
     border-radius: 5px;
     transition: transform 0.3s;
     position: relative;
@@ -57,14 +57,14 @@
 }
 
 .book-preview:hover {
-    transform: translateY(-5px); /* Hiệu ứng nổi lên khi hover */
+    transform: translateY(-5px); 
     cursor: pointer;
 }
 
 .book-cover {
     width: 99%;
     height: 350px;
-    border-top-left-radius: 5px; /* Rounded top corners for the images */
+    border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     margin-right: 1%;
     overflow: hidden;
@@ -88,24 +88,22 @@
 }
 
 .book-preview a {
-    color: black; /* Đặt màu chữ thành đen */
-    text-decoration: none; /* Loại bỏ gạch chân */
+    color: black; 
+    text-decoration: none; 
 }
 
 .read-borrow-book {
-    position: absolute; /* Cố định khối tại vị trí mong muốn trong .book-preview */
-    bottom: 15px; /* Cách đáy của .book-preview một khoảng 15px */
-    /* left: 50%; /* Căn giữa theo chiều ngang */
-    /* transform: translateX(-50%);  */
-    width: 90%; /* Độ rộng của khối đọc và mượn sách */
+    position: absolute; 
+    bottom: 15px; 
+    width: 90%; 
     padding: 0 5%;
-    display: flex; /* Dùng flex để căn chỉnh các nút */
+    display: flex; 
     justify-content: space-between;
     gap: 5px
 }
 
 .read-borrow-book button {
-    width: 48%; /* Mỗi nút chiếm 48% chiều rộng */
+    width: 48%; 
     padding: 10px 15px;
     background-color: #4285F4;
     color: white;
@@ -121,17 +119,17 @@
 }
 
 .read-borrow-book button:hover {
-    background-color: #357ae8; /* Darker color on hover */
+    background-color: #357ae8; 
 }
 
-/* Responsive cho màn hình nhỏ hơn */
+
 @media screen and (max-width: 768px) {
     .book-preview {
-        margin: 10px auto; /* Căn giữa khối sách */
+        margin: 10px auto; 
     }
 
     .read-borrow-book {
-        flex-direction: column; /* Nút xếp chồng lên nhau */
+        flex-direction: column; 
     }
 
     .read-borrow-book button {
