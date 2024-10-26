@@ -143,6 +143,14 @@ def homepage(request):
 
 @login_required(login_url="/login/")
 def borrow_book(request, book_id):
+    """
+    Handle the book borrowing process. Display the borrow form and create a loan entry if valid data is provided.
+
+    :param request: HTTP request object.
+    :param book_id: The ID of the book being borrowed.
+    :return: Redirect to homepage after successful borrowing, or render borrow_form.html template with the form.
+    """
+    
     book = get_object_or_404(Book, pk=book_id)
     if request.method == 'POST':
         form = BorrowForm(request.POST)

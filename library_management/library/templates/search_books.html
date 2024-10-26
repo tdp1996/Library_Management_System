@@ -5,17 +5,37 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Search Results for "{{ query }}"</h1>
-
-  {% if results %}
-    <ul>
-      {% for book in results %}
-        <div class="book">
-          <div><a href="{% url 'library:details' book.BookID %}">{{ book.Book_Title }} by {{ book.Book_Author }}</div>
-        </div>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No books found matching "{{ query }}".</p>
-  {% endif %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/search_books.css' %}">
+  {% include "header.html" %}
+  <div class="search-books-container">
+    <h1>Results for {{ query }}</h1>
+    {% if results %}
+      <div class="results-container">   
+        {% for book in results %}
+          <div class="book-result-card">           
+            <div class="image-section">
+              <a href="{% url 'library:details' book.BookID %}"><img class="book-image" src="{{ book.Image_URL_L }}" alt="{{ book.Book_Title }} cover"></a>
+            </div>  
+            <div class="book-info-and-action-buttons">
+              <div class="book-title">
+                <a href="{% url 'library:details' book.BookID %}"><h3>{{ book.Book_Title }}</h3></a>
+              </div>               
+              <div class="action-buttons">
+                <button class="btn-borrow" type="submit">
+                  <a href="{% url 'library:borrow_book' book.BookID %}">Borrow</a>
+                </button>
+                <button class="btn-read-online" type="submit">
+                  <a href="{{books.Book_PDF}}">Read Online</a>
+                </button>
+              </div>
+            </div>
+          </div>                         
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No books found matching "{{ query }}".</p>
+    {% endif %}
+  </div>
 {% endblock %}
+
