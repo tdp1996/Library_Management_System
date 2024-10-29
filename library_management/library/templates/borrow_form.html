@@ -1,9 +1,26 @@
 {% extends 'master.html' %}
 {% block content %}
-  <h1>Borrowing {{ book.Book_Title }}</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Borrow</button>
-  </form>
+{% include "header.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/borrow_form.css' %}">
+  <div class="borrow-container">
+    <h1 class="title">Register to Borrow Book: {{ book.Book_Title }}</h1>
+    
+    <p class="instructions">Please verify your personal information below and select a due date:</p>
+    
+    <div class="user-info">
+      <p><strong>Email:</strong> {{ user.Email }}</p>
+      <p><strong>Name:</strong> {{ user.Name }}</p>
+      <p><strong>Phone:</strong> {{ user.Phone }}</p>
+      <p><strong>Address:</strong> {{ user.Address }}</p>
+    </div>
+
+    <form method="post" class="borrow-form">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.as_p }}
+      </div>
+      <button type="submit" class="borrow-btn">Borrow Book</button>
+    </form>
+  </div>
 {% endblock %}

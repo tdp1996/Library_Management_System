@@ -8,7 +8,7 @@
 }
 
 .container h1 {
-    color:rgb(0, 0, 0); /* Dark grey color for the heading */
+    color:rgb(0, 0, 0); 
     font-size: 30px;
     margin-bottom: 10px;
     padding: 20px 0 20px 70px;
@@ -30,7 +30,6 @@
     border-radius: 5px;
     transition: transform 0.3s;
     position: relative;
-    /* padding-bottom: 80px; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -66,10 +65,7 @@
     max-width: 500px;
     display: flex;
     left: 200px; 
-    /* transform: translateX(-50%);  */
-    /* justify-content: center; */
     flex-direction: column;
-    /* margin-left: -200px; */
 }
 .book-title {
     color: rgb(33, 37, 41);
@@ -100,7 +96,6 @@
 
 
 .right-section {
-    /* bottom: 15px;  */
     padding: 50px;
     display: flex;
     justify-content: center;
