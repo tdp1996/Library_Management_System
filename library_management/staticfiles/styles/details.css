@@ -1,0 +1,105 @@
+.details-container {
+    width: 60%; 
+    height: 500px;
+    margin: 150px auto; 
+    background-color: white;
+    border-radius: 10px; 
+    
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); 
+}
+
+.book-details {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: flex-start;
+    background-color: #eaf5f9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.book-image-container {
+    width: 200px; 
+    margin-right: 20px;
+}
+
+
+.book-image {
+    width: auto; 
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.book-info-and-action-buttons {
+    width: 65%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.book-info h2 {
+    color: #4b0082;
+    font-size: 28px; 
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+.book-info p {
+    font-size: 18px;
+    margin: 5px 0;
+    color: #333;
+}
+
+
+.action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start; 
+    gap: 15px; 
+}
+
+.action-buttons button {
+    height: 30px;
+    width: 150px; 
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-buttons button a {
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+}
+
+.btn-borrow {
+    background-color: #007bff;
+}
+
+.btn-read-online {
+    background-color: #28a745;
+}
+
+.btn-borrow:hover, .btn-read-online:hover {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
