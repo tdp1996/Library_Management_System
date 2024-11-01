@@ -1,3 +1,25 @@
-django==5.1
-PyMySQL
-pandas
+asgiref==3.8.1
+cffi==1.17.0
+cryptography==43.0.0
+Django==5.1.1
+django-debug-toolbar==4.4.6
+django-polls @ file:///Users/admin/Desktop/PhuongTD/personal_project/learn-django/django-polls/dist/django_polls-0.1.tar.gz#sha256=5a949062843362f38d9b5915bc66ebe63d11dd8eec52adc12d03fc7f5568c5ce
+django-widget-tweaks==1.4.8
+exceptiongroup @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_f147j11jio/croot/exceptiongroup_1706031400682/work
+gunicorn==23.0.0
+iniconfig @ file:///home/linux1/recipes/ci/iniconfig_1610983019677/work
+numpy==2.1.1
+packaging @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_af6w2d9k11/croot/packaging_1720101860461/work
+pandas==2.2.2
+pluggy @ file:///opt/concourse/worker/volumes/live/8277900c-164a-49c8-6f2a-f55c3c0154be/volume/pluggy_1648042581708/work
+pycparser==2.22
+PyMySQL==1.1.1
+pytest @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_05ocqzv9ck/croot/pytest_1717793248617/work
+python-dateutil==2.9.0.post0
+pytz==2020.1
+six==1.16.0
+sqlparse==0.3.1
+tomli @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_90762ba4-f339-47e8-bd29-416854a59b233d27hku_/croots/recipe/tomli_1657175507767/work
+typing_extensions==4.12.2
+tzdata==2024.1
+whitenoise==6.8.1
