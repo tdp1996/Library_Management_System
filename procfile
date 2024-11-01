@@ -1,1 +1,1 @@
-web: python library_management/manage.py migrate && gunicorn library_management.wsgi 
+web: python library_management/manage.py migrate && python library_management/manage.py runserver 0.0.0.0:$PORT
